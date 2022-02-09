@@ -36,4 +36,5 @@ else:
     body = "No active rentals today"
 
 send_email("example@google.com", "test", body)
+send_email("vered.Ros@gmail.com", "test", body)
 
