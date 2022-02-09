@@ -23,15 +23,17 @@ def send_email(recipient, subject, text):
 
 
 current_rentals = rentals.get_current_rentals()
-all_current_rentals = ""
-for rental in current_rentals:
-    for rent in rental:
-        if current_rentals.index(rental) < len(current_rentals) - 1:
-            all_current_rentals += rent + ", "
-        elif current_rentals.index(rental) == len(current_rentals) - 1:
-            all_current_rentals += rent+"."
+if current_rentals:
+    all_current_rentals = ""
+    for rental in current_rentals:
+        for rent in rental:
+            if current_rentals.index(rental) < len(current_rentals) - 1:
+                all_current_rentals += rent + ", "
+            elif current_rentals.index(rental) == len(current_rentals) - 1:
+                all_current_rentals += rent+"."
+    body = "The active rentals for this day are: "+"\b" + all_current_rentals
+else:
+    body = "No active rentals today"
 
-body = "The active rentals for this day are: "+"\b" + all_current_rentals
-
-send_email("vered.Ros@gmail.com", "test", body)
+send_email("example@google.com", "test", body)
 
